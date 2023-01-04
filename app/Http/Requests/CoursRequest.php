@@ -1,0 +1,42 @@
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class CoursRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return false;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, mixed>
+     */
+    public function rules()
+    {
+        return [
+            'title'=>'required',
+            'details'=>'required',
+            'duree'=>'required',
+            'description'=>'required'
+        ];
+    }
+
+    public function messages(){
+        return[
+          'title.required'=>"title is required.",
+          'details.required'=>"Details is required.",
+          'duree.required'=>"Duree is required.",
+          'description.required'=>"Description is required.",
+        ];
+    }
+}
